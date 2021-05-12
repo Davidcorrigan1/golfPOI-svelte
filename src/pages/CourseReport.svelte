@@ -1,0 +1,37 @@
+<script>
+    import CourseList from "../components/CourseList.svelte";
+    import {user, adminBar, navBar, mainBar, subTitle, title, courseCount} from "../stores";
+    import {getContext, onMount} from "svelte";
+    const golfPOIService = getContext("GolfPOIService");
+
+    let navigation;
+    let courseList = [];
+
+    title.set("Golf Courses of Ireland");
+    subTitle.set("List of Added courses to date");
+
+    if ($user.adminUser === true) {
+        navigation = adminBar;
+        navigation[4].count = $courseCount;
+    } else {
+        navigation = mainBar;
+    }
+    navBar.set({
+        bar: navigation
+    });
+
+
+    onMount(async () => {
+
+        courseList = await golfPOIService.getCourseList();
+        $courseCount = courseList.length;
+    })
+</script>
+
+<div class="uk-container uk-margin-small">
+    <div class="uk-child-width-expand uk-flex-center uk-flex-middle uk-text-center " uk-grid>
+        <div class="uk-width-expand@m">
+            <CourseList/>
+        </div>
+    </div>
+</div>
