@@ -32,7 +32,13 @@ export const adminBar = [{
     colour: "color:rgb(63, 122, 139)",
     link: "/#/courseReport",
     count: "",
-}, {
+},{
+    title: "Golf POI Map",
+    icon: "fas fa-map-marked-alt fa-3x",
+    colour: "color:rgb(102, 153, 255)",
+    link: "/#/mapPOI",
+    count: "",
+},{
     title: "Settings",
     icon: "fas fa-sliders-h fa-3x",
     colour: "color:rgb(14, 168, 160)",
@@ -63,6 +69,12 @@ export const mainBar = [{
     icon: "fas fa-columns fa-3x",
     colour: "color:rgb(63, 122, 139)",
     link: "/#/addCategory",
+    count: "",
+}, {
+    title: "Golf POI Map",
+    icon: "fas fa-map-marked-alt fa-3x",
+    colour: "color:rgb(102, 153, 255)",
+    link: "/#/mapPOI",
     count: "",
 }, {
     title: "Settings",

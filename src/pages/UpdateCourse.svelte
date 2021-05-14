@@ -2,6 +2,7 @@
     import UpdateCourseForm from "../components/UpdateCourseForm.svelte";
     import {user, adminBar, navBar, mainBar, subTitle, title, courseCount} from "../stores";
     import CourseImages from "../components/CourseImages.svelte";
+    import CourseWeather from "../components/CourseWeather.svelte";
 
     let navigation;
     if ($user.adminUser === true) {
@@ -21,8 +22,8 @@
 <div class="uk-container uk-margin-small">
     <div class="uk-child-width-expand uk-flex-center uk-flex-middle uk-text-center " uk-grid>
         <div class="uk-width-expand@m">
+            <CourseWeather/>
             <UpdateCourseForm/>
-            <CourseImages/>
         </div>
     </div>
 </div>

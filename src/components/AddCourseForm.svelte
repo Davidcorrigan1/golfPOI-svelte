@@ -59,15 +59,15 @@
                 </div>
             </div>
             <div class="uk-margin">
-                <div class="uk-form-label uk-text-left"><h2>Longitude</h2></div>
-                <div class="uk-form-controls">
-                    <input bind:value={longitude} class="uk-input" id="form-stacked-text" type="decimal" name="longitude" placeholder="0.00" />
-                </div>
-            </div>
-            <div class="uk-margin">
                 <div class="uk-form-label uk-text-left"><h2>Latitude</h2></div>
                 <div class="uk-form-controls">
                     <input bind:value={latitude} class="uk-input" id="form-stacked-text" type="decimal" name="latitude" placeholder="0.00" />
+                </div>
+            </div>
+            <div class="uk-margin">
+                <div class="uk-form-label uk-text-left"><h2>Longitude</h2></div>
+                <div class="uk-form-controls">
+                    <input bind:value={longitude} class="uk-input" id="form-stacked-text" type="decimal" name="longitude" placeholder="0.00" />
                 </div>
             </div>
             <div class="uk-margin uk-text-left">

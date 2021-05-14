@@ -3,7 +3,6 @@
     import {push} from "svelte-spa-router";
     import {currentCourse} from "../Stores";
 
-
     const golfPOIService = getContext("GolfPOIService");
     let errorMessage = ""
     let imageList=[];

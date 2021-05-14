@@ -50,6 +50,16 @@ export class GolfPOIService {
         }
     }
 
+    async getGolfPOIWeather(latitude, longitude) {
+        try {
+            const response = await axios.get(`${this.baseUrl}/api/weatherAPI/` + latitude + "/" + longitude);
+            this.course = await response.data;
+            return this.course;
+        } catch (error) {
+            return false;
+        }
+    }
+
     async deleteGolfPOI(courseId) {
         try {
             const response = await axios.delete(this.baseUrl + "/api/golfPOIs/" + courseId)
