@@ -21,6 +21,16 @@ export class GolfPOIService {
         }
     }
 
+    async getCoursesByCategory(categoryId) {
+        try {
+            const response = await axios.get(this.baseUrl + "/api/golfPOIs/findByCategory/" + categoryId)
+            this.courseList = await response.data;
+            return this.courseList;
+        } catch (error) {
+            return [];
+        }
+    }
+
     async getCourse(id) {
         try {
             const response = await axios.get(this.baseUrl + "/api/golfPOIs/" + id)

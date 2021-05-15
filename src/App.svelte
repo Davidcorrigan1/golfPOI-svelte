@@ -11,6 +11,7 @@
   import AddCourse from "./pages/AddCourse.svelte";
   import UpdateCourse from "./pages/UpdateCourse.svelte";
   import UserReport from "./pages/UserReport.svelte";
+  import CourseCategory from "./pages/CourseCategory.svelte";
   import MapPOI from "./pages/MapPOI.svelte";
   import Navigator from "./components/Navigator.svelte";
   import Router from "svelte-spa-router";
@@ -28,7 +29,8 @@
     "/addCourse": AddCourse,
     "/updateCourse": UpdateCourse,
     "/userReport": UserReport,
-    "/mapPOI": MapPOI
+    "/mapPOI": MapPOI,
+    "/courseCategory": CourseCategory,
   };
 
 

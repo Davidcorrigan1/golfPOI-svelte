@@ -1,11 +1,11 @@
 <script>
     import {onMount, getContext} from "svelte";
     import {push} from "svelte-spa-router";
-    import {navBar, currentCourse, courseCount} from "../stores";
+    import {navBar, currentCourse, currentCategoryId, courseCount} from "../stores";
 
     const golfPOIService = getContext("GolfPOIService");
     let errorMessage = "";
-    let courseList;
+    export let courseList;
 
     async function deleteCourse(courseId) {
         let success = await golfPOIService.deleteGolfPOI(courseId)
@@ -18,8 +18,8 @@
     }
 
     onMount(async () => {
-        courseList = await golfPOIService.getCourseList();
-        $courseCount = courseList.length;
+        let totalCourseList = await golfPOIService.getCourseList();
+        $courseCount = totalCourseList.length;
         $navBar.bar[4].count = $courseCount;
     })
 
@@ -42,7 +42,7 @@
             <tr>
                 <td><a on:click={() => $currentCourse = course } href="/#/updateCourse"> {course.courseName}</a></td>
                 <td>{course.courseDesc}</td>
-                <td>{course.category.province}</td>
+                <td><a on:click={() => $currentCategoryId = course.category._id } href="/#/courseCategory"> {course.category.province}</a></td>
                 <td>{course.lastUpdatedBy.firstName} {course.lastUpdatedBy.lastName}</td>
                 <td>Image</td>
                 <td><button on:click={deleteCourse(course._id)} class="uk-button-danger uk-button-primary uk-button-small uk-width-1-1">Delete</button></td>
