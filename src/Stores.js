@@ -1,6 +1,7 @@
 import { writable } from "svelte/store";
 export const courseCount = writable(0);
 export const currentCourse = writable("");
+export const currentCategoryId = writable("");
 
 export const adminBar = [{
     title: "Add a course",
