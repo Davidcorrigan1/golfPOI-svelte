@@ -1,6 +1,6 @@
 <script>
     import CourseList from "../components/CourseList.svelte";
-    import {user, adminBar, navBar, mainBar, subTitle, title, courseCount} from "../stores";
+    import {user, adminBar, navBar, mainBar, subTitle, title, courseCount, currentCategoryId} from "../stores";
     import {getContext, onMount} from "svelte";
     const golfPOIService = getContext("GolfPOIService");
 
@@ -22,14 +22,14 @@
 
 
     onMount(async () => {
-        courseListArray = await golfPOIService.getCourseList();
+        courseListArray = await golfPOIService.getCoursesByCategory($currentCategoryId);
     })
 </script>
 
 <div class="uk-container uk-margin-small">
     <div class="uk-child-width-expand uk-flex-center uk-flex-middle uk-text-center " uk-grid>
         <div class="uk-width-expand@m">
-            <CourseList courseList={courseListArray} />
+            <CourseList courseList={courseListArray}/>
         </div>
     </div>
 </div>
