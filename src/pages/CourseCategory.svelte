@@ -20,7 +20,7 @@
         bar: navigation
     });
 
-
+    // Retrieve the course by the category id and assign to prop
     onMount(async () => {
         courseListArray = await golfPOIService.getCoursesByCategory($currentCategoryId);
     })
