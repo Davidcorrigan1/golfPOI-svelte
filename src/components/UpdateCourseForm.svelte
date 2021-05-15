@@ -12,11 +12,14 @@
     let currentLatitude = 0.0;
     let courseName="";
     let courseDesc="";
+    let courseId="";
     let selected;
+    let images = [];
 
     onMount(async () => {
         categories = await golfPOIService.getCategoryList();
         currentGolfPOI = await golfPOIService.getCourse($currentCourse._id);
+        images = await golfPOIService.getImageList($currentCourse.relatedImages)
         currentLatitude = currentGolfPOI.location.coordinates[1];
         currentLongitude = currentGolfPOI.location.coordinates[0];
         courseName = currentGolfPOI.courseName;
@@ -24,6 +27,22 @@
         selected = currentGolfPOI.category;
     })
 
+    async function deleteImage(imageId) {
+        // Retrieve the course document from the golfPOI collection.
+        const updateCourse = await golfPOIService.getCourse(currentGolfPOI._id);
+
+        // Find the array element matching the image id and remove from the relatedImages array
+        // Then save the course document back to the collection.
+        const elementId = updateCourse.relatedImages.indexOf(imageId);
+        const removedItem = updateCourse.relatedImages.splice(elementId,1);
+        console.log(updateCourse);
+        let success = await golfPOIService.updateGolfPOI(currentGolfPOI._id, $user._id, updateCourse)
+        if (success) {
+            push("/courseReport");
+        } else {
+            errorMessage = "Could Not Delete Image";
+        }
+    }
     async function updateGolfPOI() {
         let updateGolfPOI = {
             location : {
@@ -93,6 +112,21 @@
         </div>
         <div class="uk-margin uk-text-left">
             <button class="uk-button uk-button-primary uk-button-large uk-width-1-6">Save </button>
+        </div>
+        <div class="uk-container uk-padding-small">
+            <div class="uk-child-width-1-4@s uk-flex uk-flex-center" uk-grid uk-height-match="target: .uk-card">
+                {#each images as image}
+                    <div class="uk-card uk-card-default uk-card-small uk-text-center uk-text-baseline uk-animation-scale-up">
+                        <div class="uk-card-media-top">
+                            <img src="{image.url}" width="400" height="220">
+                        </div>
+
+                        <div class="uk-card-footer">
+                            <button on:click={deleteImage(image.public_id)} class="uk-button-danger uk-button-primary uk-button-small uk-width-1-1">Delete</button>
+                        </div>
+                    </div>
+                {/each}
+            </div>
         </div>
     </fieldset>
     {#if errorMessage}

@@ -1,14 +1,31 @@
 <script>
-    import {getContext} from "svelte";
-    import {user} from "../stores";
-    let firstName = $user.firstName;
-    let lastName = $user.lastName;
-    let email = $user.email;
-    let password = $user.password
-    let message = "";
+    import {getContext, onMount} from "svelte";
     const golfPOIService = getContext("GolfPOIService");
+
+    export let updateUser;
+    let firstName;
+    let lastName;
+    let email;
+    let password;
+    let loginCount;
+    let lastLoginDate;
+    let userId;
+    let message = "";
+
+    onMount(async () => {
+        firstName = updateUser.firstName;
+        lastName = updateUser.lastName;
+        email = updateUser.email;
+        password = updateUser.password;
+        loginCount = updateUser.loginCount;
+        lastLoginDate = updateUser.lastLoginDate;
+        userId = updateUser._id;
+        message = "";
+    });
+
+
     async function save() {
-        let success = await golfPOIService.updateSettings(firstName, lastName, email, password, $user._id, $user.loginCount, $user.lastLoginDate)
+        let success = await golfPOIService.updateSettings(firstName, lastName, email, password, userId, loginCount, lastLoginDate)
         if (success) {
             message = "Settings updated";
         } else {

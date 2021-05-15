@@ -1,7 +1,7 @@
 <script>
     import {onMount, getContext} from "svelte";
     import {push} from "svelte-spa-router";
-    import {userToDelete, courseCount} from "../stores";
+    import {userToUpdate, courseCount} from "../stores";
 
     const golfPOIService = getContext("GolfPOIService");
     let errorMessage = "";
@@ -25,8 +25,6 @@
     }
 </script>
 
-
-
 <div class="uk-margin uk-width-1xlarge uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">
     <table class="uk-table">
         <caption>
@@ -43,7 +41,7 @@
         <tbody class="uk-text-left">
             {#each userList as user}
             <tr>
-                <td><a on:click={() => $userToDelete = user._id} href="/#/userUpdate" >{user.firstName}</a> </td>
+                <td><a on:click={() => $userToUpdate = user} href="/#/updateUser" >{user.firstName}</a> </td>
                 <td>{user.lastName}</td>
                 <td>{user.email}</td>
                 <td>{user.lastLoginDate}</td>

@@ -229,7 +229,7 @@ export class GolfPOIService {
 
     async getImageList(idList) {
         try {
-            const response = await axios.get(this.baseUrl + "/api/imageStore/" + idList)
+            const response = await axios.get(this.baseUrl + "/api/imageAPI/" + idList)
             this.imageList = await response.data;
             return this.imageList;
         } catch (error) {

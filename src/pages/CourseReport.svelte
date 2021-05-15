@@ -20,7 +20,6 @@
         bar: navigation
     });
 
-
     onMount(async () => {
         courseListArray = await golfPOIService.getCourseList();
     })
