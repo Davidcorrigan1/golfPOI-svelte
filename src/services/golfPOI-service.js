@@ -236,4 +236,16 @@ export class GolfPOIService {
             return [];
         }
     }
+
+
+    async uploadImage(image) {
+        try {
+            const response = await axios.post(this.baseUrl + "/api/imageAPI/uploadImage" , image)
+            return response.data;
+        } catch (error) {
+            console.log("Failing here!")
+            console.log(error)
+            return [];
+        }
+    }
 }

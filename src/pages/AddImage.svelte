@@ -1,6 +1,6 @@
 <script>
     import CourseImages from "../components/CourseImages.svelte";
-    import AddImage from "../components/AddImage.svelte";
+    import AddImageForm from "../components/AddImageForm.svelte";
     import {user, currentCourse, adminBar, navBar, mainBar, subTitle, title, courseCount} from "../stores";
 
     let navigation;
@@ -18,11 +18,12 @@
     });
 </script>
 
-<div class="uk-container uk-padding-small">
-    <AddImage imageCourse="{$currentCourse}"/>
-</div>
+<div>
+    <div class="uk-container uk-padding-small">
+        <AddImageForm imageCourse="{$currentCourse}"/>
+    </div>
 
-
-<div class="uk-container uk-padding-small">
-    <CourseImages imageCourse="{$currentCourse}" currentUser="{$user}"/>
+    <div class="uk-container uk-padding-small">
+        <CourseImages imageCourse="{$currentCourse}" currentUser="{$user}"/>
+    </div>
 </div>
