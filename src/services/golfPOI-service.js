@@ -238,9 +238,9 @@ export class GolfPOIService {
     }
 
 
-    async uploadImage(image) {
+    async uploadImage(courseId, imagefile) {
         try {
-            const response = await axios.post(this.baseUrl + "/api/imageAPI/uploadImage" , image)
+            const response = await axios.post(this.baseUrl + "/api/golfPOIs/upload/" + courseId , {imagefile: imagefile})
             return response.data;
         } catch (error) {
             console.log("Failing here!")
