@@ -11,6 +11,7 @@
         let success = await golfPOIService.deleteGolfPOI(courseId)
         if (success) {
             courseList = await golfPOIService.getCourseList();
+            $courseCount = courseList.length;
             push("/courseReport");
         } else {
             errorMessage = "Could not delete Golf POI";
@@ -44,7 +45,7 @@
                 <td>{course.courseDesc}</td>
                 <td><a on:click={() => $currentCategoryId = course.category._id } href="/#/courseCategory"> {course.category.province}</a></td>
                 <td>{course.lastUpdatedBy.firstName} {course.lastUpdatedBy.lastName}</td>
-                <td>Image</td>
+                <td><a on:click={() => $currentCourse = course } href="/#/addImage"> <span uk-icon="image"></span></a></td>
                 <td><button on:click={deleteCourse(course._id)} class="uk-button-danger uk-button-primary uk-button-small uk-width-1-1">Delete</button></td>
             </tr>
             {/each}

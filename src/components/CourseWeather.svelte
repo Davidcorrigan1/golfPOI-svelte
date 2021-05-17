@@ -1,7 +1,6 @@
 <script>
     import {user, currentCourse} from "../stores";
     import {getContext, onMount} from "svelte";
-    import {WeatherAPI} from '../services/weather-service';
     const golfPOIService = getContext("GolfPOIService");
 
     let weatherAPI;
@@ -21,8 +20,7 @@
         weatherFeelsLike = currentWeather.main.feels_like;
         weatherWindSpeed = currentWeather.wind.speed;
         weatherHumidity = currentWeather.main.humidity;
-        //currentWeather = await weatherAPI.getWeather(currentGolfPOI.location.coordinates[1], currentGolfPOI.location.coordinates[0]);
-    })
+       })
 </script>
 
 <div class="uk-card uk-card-default uk-padding-small uk-visible@m">

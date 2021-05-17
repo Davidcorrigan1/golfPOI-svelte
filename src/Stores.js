@@ -2,6 +2,9 @@ import { writable } from "svelte/store";
 export const courseCount = writable(0);
 export const currentCourse = writable("");
 export const currentCategoryId = writable("");
+export const title = writable("");
+export const subTitle = writable("");
+export const userToUpdate = writable("");
 
 export const adminBar = [{
     title: "Add a course",
@@ -111,10 +114,6 @@ export const welcomeBar = [
 export const navBar = writable({
     bar: [],
 });
-
-export const title = writable("");
-export const subTitle = writable("");
-export const userToDelete = writable("");
 
 export const user = writable({
     _id : "",
