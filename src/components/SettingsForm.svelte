@@ -25,11 +25,11 @@
 
 
     async function save() {
-        let success = await golfPOIService.updateSettings(firstName, lastName, email, password, userId, loginCount, lastLoginDate)
-        if (success) {
+        let response = await golfPOIService.updateSettings(firstName, lastName, email, password, userId, loginCount, lastLoginDate)
+        if (response.success) {
             message = "Settings updated";
         } else {
-            message = "Error Trying to save settings";
+            message = response.message;
         }
     }
 </script>

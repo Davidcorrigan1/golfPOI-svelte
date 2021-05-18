@@ -45,9 +45,9 @@ export class GolfPOIService {
     async createGolfPOI(newGolfPOI) {
         try {
             const response = await axios.post(`${this.baseUrl}/api/golfPOIs`, newGolfPOI);
-            return response.status == 201;
+            return {success: true, response: response};
         } catch (error) {
-            return false;
+            return {success: false, message: error.response.data.message};
         }
     }
 
@@ -159,7 +159,7 @@ export class GolfPOIService {
             }
             return false
         } catch (error) {
-            return false;
+            return { success: false, message: error.response.data.message };
         }
     }
 
@@ -169,7 +169,7 @@ export class GolfPOIService {
             user.set(response.data);
             return response.data;
         } catch (error) {
-            return false;
+            return { success: false, message: error.response.data.message };
         }
     }
 
@@ -217,13 +217,12 @@ export class GolfPOIService {
                 loginCount: loginCount,
                 lastLoginDate: lastLoginDate
             };
-            console.log(userDetails);
             const response = await axios.post(`${this.baseUrl}/api/users/update/${id}`, userDetails);
             const newUser = await response.data;
             user.set(newUser);
-            return true;
+            return {success: true};
         } catch (error) {
-            return false;
+            return { success: false, message: error.response.data.message };
         }
     }
 

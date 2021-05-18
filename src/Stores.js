@@ -120,7 +120,6 @@ export const user = writable({
     firstName : "",
     lastName : "",
     email : "",
-    password : "",
     adminUser : false,
     loginCount : 0,
     lastLoginDate : "",
