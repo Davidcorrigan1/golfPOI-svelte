@@ -1,10 +1,50 @@
 import { writable } from "svelte/store";
-export const courseCount = writable(0);
-export const currentCourse = writable("");
-export const currentCategoryId = writable("");
+import {loc} from "svelte-spa-router";
+
 export const title = writable("");
 export const subTitle = writable("");
-export const userToUpdate = writable("");
+
+export const courseCount = writable(localStorage.courseCount? localStorage.courseCount : 0);
+courseCount.subscribe(value => localStorage.setItem("courseCount", value));
+
+export const currentCategoryId = writable(localStorage.currentCategoryId? localStorage.currentCategoryId : "");
+currentCategoryId.subscribe(value => localStorage.setItem("currentCategoryId", value));
+
+export const userToUpdate = writable(
+    localStorage.userToUpdate? JSON.parse(localStorage.userToUpdate) : {_id : "",
+        firstName : "",
+        lastName : "",
+        email : "",
+        adminUser : false,
+        loginCount : 0,
+        lastLoginDate : ""});
+
+userToUpdate.subscribe(value => localStorage.setItem("userToUpdate", JSON.stringify(value)));
+
+export const currentCourse = writable(
+    localStorage.currentCourse? JSON.parse(localStorage.currentCourse) : {_id : "",
+        location : {
+            type : "Point",
+            coordinates : []
+        },
+        relatedImages : [],
+        courseName : "",
+        courseDesc : "",
+        lastUpdatedBy : "",
+        category : ""});
+
+currentCourse.subscribe(value => localStorage.setItem("currentCourse", JSON.stringify(value)));
+
+export const user = writable(
+    localStorage.user? JSON.parse(localStorage.user) : {_id : "",
+        firstName : "",
+        lastName : "",
+        email : "",
+        adminUser : false,
+        loginCount : 0,
+        lastLoginDate : ""});
+
+user.subscribe(val => localStorage.setItem("user",JSON.stringify(val)));
 
 export const adminBar = [{
     title: "Add a course",
@@ -115,12 +155,4 @@ export const navBar = writable({
     bar: [],
 });
 
-export const user = writable({
-    _id : "",
-    firstName : "",
-    lastName : "",
-    email : "",
-    adminUser : false,
-    loginCount : 0,
-    lastLoginDate : "",
-});
+
