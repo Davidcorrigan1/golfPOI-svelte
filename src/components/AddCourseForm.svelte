@@ -33,11 +33,11 @@
             lastUpdatedBy: $user._id
         }
 
-        let success = await golfPOIService.createGolfPOI(newGolfPOI)
-        if (success) {
+        let response = await golfPOIService.createGolfPOI(newGolfPOI)
+        if (response.success) {
             push("/courseReport");
         } else {
-            errorMessage = "Could Not add new Golf POI";
+            errorMessage = response.message;
         }
     }
 </script>

@@ -6,8 +6,8 @@ export class GolfPOIService {
 
     constructor(baseUrl) {
         this.baseUrl = baseUrl;
-        if (localStorage.donation) {
-            axios.defaults.headers.common["Authorization"] = "Bearer " + JSON.parse(localStorage.donation);
+        if (localStorage.golfPOIToken) {
+            axios.defaults.headers.common["Authorization"] = "Bearer " + JSON.parse(localStorage.golfPOIToken);
         }
     }
 
@@ -45,9 +45,9 @@ export class GolfPOIService {
     async createGolfPOI(newGolfPOI) {
         try {
             const response = await axios.post(`${this.baseUrl}/api/golfPOIs`, newGolfPOI);
-            return response.status == 201;
+            return {success: true, response: response};
         } catch (error) {
-            return false;
+            return {success: false, message: error.response.data.message};
         }
     }
 
@@ -121,7 +121,7 @@ export class GolfPOIService {
             const response = await axios.post(`${this.baseUrl}/api/users/authenticate`, {email, password});
             if (response.data.success) {
                 axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.token;
-                localStorage.donation = JSON.stringify(response.data.token);
+                localStorage.golfPOIToken = JSON.stringify(response.data.token);
                 return response.data;
             }
         } catch (error) {
@@ -142,7 +142,7 @@ export class GolfPOIService {
         });
         courseCount.set(0);
         axios.defaults.headers.common["Authorization"] = "";
-        localStorage.donation = null;
+        localStorage.golfPOIToken = null;
     }
 
     async signup(newUser) {
@@ -152,14 +152,14 @@ export class GolfPOIService {
                 const response = await axios.post(`${this.baseUrl}/api/users/authenticate`, {email: newUser.email, password: newUser.password});
                 if (response.data.success) {
                     axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.token;
-                    localStorage.donation = JSON.stringify(response.data.token);
+                    localStorage.golfPOIToken = JSON.stringify(response.data.token);
                     user.set(createdUser.data);
                     return response.data;
                 }
             }
             return false
         } catch (error) {
-            return false;
+            return { success: false, message: error.response.data.message };
         }
     }
 
@@ -169,7 +169,7 @@ export class GolfPOIService {
             user.set(response.data);
             return response.data;
         } catch (error) {
-            return false;
+            return { success: false, message: error.response.data.message };
         }
     }
 
@@ -217,13 +217,12 @@ export class GolfPOIService {
                 loginCount: loginCount,
                 lastLoginDate: lastLoginDate
             };
-            console.log(userDetails);
             const response = await axios.post(`${this.baseUrl}/api/users/update/${id}`, userDetails);
             const newUser = await response.data;
             user.set(newUser);
-            return true;
+            return {success: true};
         } catch (error) {
-            return false;
+            return { success: false, message: error.response.data.message };
         }
     }
 

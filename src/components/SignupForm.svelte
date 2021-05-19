@@ -26,13 +26,12 @@
             adminUserFlag = false
         }
 
-        let success = await golfPOIService.signup(newUser)
-        if (success) {
+        let response = await golfPOIService.signup(newUser)
+        if (response.success) {
             push("/courseReport");
         } else {
-            newUser.email = "";
             newUser.password = "";
-            errorMessage = "Error signing up new User.";
+            errorMessage = response.message;
         }
     }
 </script>
