@@ -2,16 +2,10 @@
     import {user} from "../stores";
     import {push} from "svelte-spa-router";
     import {getContext, onMount} from "svelte";
-    import CourseImages from "./CourseImages.svelte";
-
     const golfPOIService = getContext("GolfPOIService");
 
     let errorMessage = "";
-
     let categories = []
-    onMount(async () => {
-        categories = await golfPOIService.getCategoryList();
-    })
     let courseName = "";
     let courseDesc = "";
     let longitude = "";
@@ -40,6 +34,10 @@
             errorMessage = response.message;
         }
     }
+
+    onMount(async () => {
+        categories = await golfPOIService.getCategoryList();
+    })
 </script>
 
 
@@ -47,32 +45,32 @@
     <div class="uk-grid uk-grid-stack">
         <div class="uk-width-3-4@m">
             <div class="uk-margin">
-                <div class="uk-form-label uk-text-left"><h2>Course Name</h2></div>
+                <div class="uk-form-label uk-text-left"><h3>Course Name</h3></div>
                 <div class="uk-form-controls">
                     <input bind:value={courseName} class="uk-input" id="form-stacked-text" type="text" name="courseName" placeholder="name" />
                 </div>
             </div>
             <div class="uk-margin">
-                <div class="uk-form-label uk-text-left"><h2>Course Description</h2></div>
+                <div class="uk-form-label uk-text-left"><h3>Course Description</h3></div>
                 <div class="uk-form-controls">
-                    <input bind:value={courseDesc} class="uk-input" id="form-stacked-text" type="text" name="courseDesc" placeholder="desc" />
+                    <input bind:value={courseDesc} class="uk-input uk-form-large" rows= "5" type="text" name="courseDesc" placeholder="desc" />
                 </div>
             </div>
             <div class="uk-margin">
-                <div class="uk-form-label uk-text-left"><h2>Latitude</h2></div>
+                <div class="uk-form-label uk-text-left"><h3>Latitude</h3></div>
                 <div class="uk-form-controls">
-                    <input bind:value={latitude} class="uk-input" id="form-stacked-text" type="decimal" name="latitude" placeholder="0.00" />
+                    <input bind:value={latitude} class="uk-input" type="decimal" name="latitude" placeholder="0.00" />
                 </div>
             </div>
             <div class="uk-margin">
-                <div class="uk-form-label uk-text-left"><h2>Longitude</h2></div>
+                <div class="uk-form-label uk-text-left"><h3>Longitude</h3></div>
                 <div class="uk-form-controls">
-                    <input bind:value={longitude} class="uk-input" id="form-stacked-text" type="decimal" name="longitude" placeholder="0.00" />
+                    <input bind:value={longitude} class="uk-input" type="decimal" name="longitude" placeholder="0.00" />
                 </div>
             </div>
             <div class="uk-margin uk-text-left">
                 <div>
-                    <div class="uk-form-label"><h2>Province</h2></div>
+                    <div class="uk-form-label"><h3>Province</h3></div>
                 </div>
                 <div class="uk-form-controls ">
                     {#each categories  as category}
@@ -88,7 +86,7 @@
         </div>
     </div>
     {#if errorMessage}
-        <div class="uk-text-left uk-text-small">
+        <div class="uk-text-left uk-text-large">
             {errorMessage}
         </div>
     {/if}

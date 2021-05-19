@@ -17,15 +17,9 @@
 
     async function deleteImage(imageId) {
         // Retrieve the course document from the golfPOI collection.
-        const updateCourse = await golfPOIService.getCourse(imageCourse._id);
+        const updateCourse = await golfPOIService.deleteImage(imageId, imageCourse._id, currentUser._id );
 
-        // Find the array element matching the image id and remove from the relatedImages array
-        // Then save the course document back to the collection.
-        const elementId = updateCourse.relatedImages.indexOf(imageId);
-        const removedItem = updateCourse.relatedImages.splice(elementId,1);
-        console.log(updateCourse);
-        let success = await golfPOIService.updateGolfPOI(imageCourse._id, currentUser._id, updateCourse)
-        if (success) {
+        if (updateCourse) {
             push("/courseReport");
         } else {
             errorMessage = "Could Not Delete Image"

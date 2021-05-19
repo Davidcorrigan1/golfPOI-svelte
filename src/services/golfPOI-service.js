@@ -54,9 +54,9 @@ export class GolfPOIService {
     async updateGolfPOI(courseId, userId, updatedGolfPOI) {
         try {
             const response = await axios.post(`${this.baseUrl}/api/golfPOIs/update/` + courseId + "/" + userId, updatedGolfPOI);
-            return response.status == 201;
+            return {success: true, response: response};
         } catch (error) {
-            return false;
+            return {success: false, message: error.response.data.message};
         }
     }
 
@@ -240,6 +240,15 @@ export class GolfPOIService {
     async uploadImage(courseId, imagefile) {
         try {
             const response = await axios.post(this.baseUrl + "/api/golfPOIs/upload/" + courseId , {imagefile: imagefile})
+            return response.data;
+        } catch (error) {
+            return [];
+        }
+    }
+
+    async deleteImage(imageId, courseId, userId) {
+        try {
+            const response = await axios.delete(this.baseUrl + "/api/golfPOIs/deleteImage/" + imageId + "/" + courseId + "/" + userId)
             return response.data;
         } catch (error) {
             console.log("Failing here!")

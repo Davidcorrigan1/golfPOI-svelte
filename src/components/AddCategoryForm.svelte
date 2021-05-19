@@ -9,6 +9,7 @@
     let errorMessage = ""
     let categoryList=[];
 
+    // Delete a category from the DB collection
     async function deleteCategory(categoryId) {
         let success = await golfPOIService.deleteCategory(categoryId)
         if (success) {
@@ -19,6 +20,7 @@
         }
     }
 
+    // Add a new category to the DB collection
     async function addCategory() {
         const validCountiesArray = validCounties.split(' ');
         if (province !== "" && validCounties !== "") {
@@ -42,6 +44,7 @@
         }
     }
 
+    // On mount of the page we need to get the list of current category
     onMount(async () => {
         categoryList = await golfPOIService.getCategoryList();
     })
@@ -52,13 +55,13 @@
     <div class="uk-grid uk-grid-stack">
         <div class="uk-width-3-4@m">
             <div class="uk-margin">
-                <label class="uk-form-label" for="form-stacked-text">Enter Province Name</label>
+                <label class="uk-form-label" for="form-stacked-text"><h3>Enter Province Name</h3></label>
                 <div class="uk-form-controls">
-                    <input bind:value={province} class="uk-input" id="form-stacked-text" type="text" name="province" placeholder="Province" />
+                    <input bind:value={province} class="uk-input" type="text" name="province" placeholder="Province" />
                 </div>
             </div>
             <div class="uk-margin">
-                <label class="uk-form-label" for="form-stacked-text">Enter a Valid List of Province Counties</label>
+                <label class="uk-form-label" for="form-stacked-text"><h3>Enter a Valid List of Province Counties</h3></label>
                 <div class="uk-form-controls">
                     <input bind:value={validCounties} class="uk-input" id="form-stacked-text" type="text" name="validCounties" placeholder="Counties in Province" />
                 </div>
