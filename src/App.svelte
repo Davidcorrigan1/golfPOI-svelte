@@ -15,6 +15,7 @@
   import UpdateUser from "./pages/UpdateUser.svelte";
   import MapPOI from "./pages/MapPOI.svelte";
   import AddImage from "./pages/AddImage.svelte";
+  import DisplayPOI  from "./pages/DisplayPOI.svelte";
   import Navigator from "./components/Navigator.svelte";
   import Router from "svelte-spa-router";
 
@@ -34,7 +35,8 @@
     "/mapPOI": MapPOI,
     "/courseCategory": CourseCategory,
     "/updateUser": UpdateUser,
-    "/addImage": AddImage
+    "/addImage": AddImage,
+    "/displayPOI/*": DisplayPOI
   };
 
 

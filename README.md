@@ -1,48 +1,120 @@
-# Svelte + Vite
 
-This template should help get you started developing with Svelte in Vite.
+<p align="center">
+  <h3 align="center">Golf Course of Ireland Readme</h3>
 
-## Recommended IDE Setup
+  <p align="center">
 
-[VSCode](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode).
 
-## Need an official Svelte framework?
+<!-- TABLE OF CONTENTS -->
+<details open="open">
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ol>
+</details>
 
-Check out [SvelteKit](https://github.com/sveltejs/kit#readme), which is also powered by Vite. Deploy anywhere with its serverless-first approach and adapt to various platforms, with out of the box support for TypeScript, SCSS, and Less, and easily-added support for mdsvex, GraphQL, PostCSS, Tailwind CSS, and more.
 
-## Technical considerations
 
-**Why use this over SvelteKit?**
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
-- It brings its own routing solution which might not be preferable for some users.
-- It is first and foremost a framework that just happens to use Vite under the hood, not a Vite app.
-  `vite dev` and `vite build` wouldn't work in a SvelteKit environment, for example.
+This site was developed as a POI web application for Golf Courses of Ireland. Users can use the app to add details of course courses
+to the Database along with the coordinates of the course and some images.
 
-This template contains as little as possible to get started with Vite + Svelte, while taking into account the developer experience with regards to HMR and intellisense. It demonstrates capabilities on par with the other `create-app` templates and is a good starting point for beginners dipping their toes into a Vite + Svelte project.
 
-Should you later need the extended capabilities and extensibility provided by SvelteKit, the template has been structured similarly to SvelteKit so that it is easy to migrate.
+Here are the main features:
+* Authentication of users.
+  * A user can be a normal user who can add/update/delete course data
+  * Or a Admin user who has addition functionality around user admin and statistics. An admin user can see all normal user details and update and delete them.
+    They can check a users login count and last date of login. They also see stats on the number of POI golf courses added to the system.
+* Authenticated users can add new course details, name description and coordinates.
+* Authenticated users can update and delete course details
+* They can add/delete images to/from the course listing.
+* They can add new categories and update categories
+* Courses can be filtered by category at the click of a button.
+* On the edit course page the current course weather will also be displayed.
+* There is a Map page which will display markers for all courses entered.
+* Each marker has a link which will take the user to a Golf POI display page with a more detailed map
 
-**Why `global.d.ts` instead of `compilerOptions.types` inside `jsconfig.json` or `tsconfig.json`?**
+### Built With
 
-Setting `compilerOptions.types` shuts out all other types not explicitly listed in the configuration. Using triple-slash references keeps the default TypeScript setting of accepting type information from the entire workspace, while also adding `svelte` and `vite/client` type information.
+This section lists major platforms, frameworks and technologies that were used to build the project using.
 
-**Why include `.vscode/extensions.json`?**
+This is a Front End application built using Svelte. 
+It consumed APIs from the https://github.com/davidcorrigan1/golf-courses-poi-v2  node.js hapi application.
 
-Other templates indirectly recommend extensions via the README, but this file allows VS Code to prompt the user to install the recommended extension upon opening the project.
+* [Svelte](https://svelte.dev)
+* [Leaflet](https://leafletjs.com)
+* [Node.js (Backend)](https://nodejs.org)
+* [hapi (Backend)](https://hapi.dev/)
+* [Mongoose (Backend DB)](https://mongoosejs.com/)
+* [uikit](https://getuikit.com/)
 
-**Why enable `checkJs` in the JS template?**
 
-It is likely that most cases of changing variable types in runtime are likely to be accidental, rather than deliberate. This provides advanced typechecking out of the box. Should you like to take advantage of the dynamically-typed nature of JavaScript, it is trivial to change the configuration.
 
-**Why is HMR not preserving my local component state?**
 
-HMR state preservation comes with a number of gotchas! It has been disabled by default in both `svelte-hmr` and `@sveltejs/vite-plugin-svelte` due to its often surprising behavior. You can read the details [here](https://github.com/rixo/svelte-hmr#svelte-hmr).
+<!-- GETTING STARTED -->
+## Getting Started
 
-If you have state that's important to retain within a component, consider creating an external store which would not be replaced by HMR.
 
-```js
-// store.js
-// An extremely simple external store
-import { writable } from 'svelte/store'
-export default writable(0)
-```
+To get a local copy up and running follow these simple example steps.
+
+### Prerequisites
+
+This is an example of how to list things you need to use the software and how to install them.
+* npm
+  ```sh
+  npm install npm@latest -g
+  ```
+
+### Installation
+
+1. Details to be added
+2. Clone the repo
+   ```sh
+   git clone https://github.com/Davidcorrigan1/golfPOI-svelte.git
+   ```
+3. Install NPM packages
+   ```sh
+   npm install
+   ```
+
+
+<!-- CONTRIBUTING -->
+## Contributing
+
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+
+
+<!-- LICENSE -->
+## License
+
+Distributed under the WIT License.
+
+
+<!-- CONTACT -->
+## Contact
+
+
+
+Project Link: [https://github.com/davidcorrigan1/golfPOI-svelte](https://github.com/davidcorrigan1/golfPOI-svelte
+)
+
+
+

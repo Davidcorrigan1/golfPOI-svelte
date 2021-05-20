@@ -6,9 +6,9 @@
 <div class="uk-container uk-margin-small">
     <Title/>
 </div>
-<div class="uk-flex uk-flex-center uk-flex-middle uk-text-center uk-grid-small" uk-grid>
+<div class="uk-margin uk-width-1xlarge uk-card uk-card-default uk-card-body uk-box-shadow-large">
     <div>
-        <ul class="uk-iconnav uk-margin-left uk-margin-right">
+        <ul class="uk-iconnav uk-margin-left uk-margin-right uk-flex-center uk-flex-middle">
             {#each $navBar.bar as nav}
                 {#if nav.count != ""}
                     <a href="{nav.link}" class="uk-card uk-card-small uk-card-hover uk-padding-small">

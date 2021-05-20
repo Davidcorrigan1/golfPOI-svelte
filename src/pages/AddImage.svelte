@@ -23,6 +23,8 @@
         <AddImageForm imageCourse="{$currentCourse}"/>
     </div>
 
+</div>
+<div>
     <div class="uk-container uk-padding-small">
         <CourseImages imageCourse="{$currentCourse}" currentUser="{$user}"/>
     </div>

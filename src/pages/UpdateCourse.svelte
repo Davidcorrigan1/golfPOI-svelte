@@ -1,6 +1,6 @@
 <script>
     import UpdateCourseForm from "../components/UpdateCourseForm.svelte";
-    import {user, adminBar, navBar, mainBar, subTitle, title, courseCount} from "../stores";
+    import {user, currentCourse, adminBar, navBar, mainBar, subTitle, title, courseCount} from "../stores";
     import CourseImages from "../components/CourseImages.svelte";
     import CourseWeather from "../components/CourseWeather.svelte";
 
@@ -25,5 +25,9 @@
             <CourseWeather/>
             <UpdateCourseForm/>
         </div>
+
+    </div>
+    <div class="uk-container uk-padding-small">
+        <CourseImages imageCourse="{$currentCourse}" currentUser="{$user}"/>
     </div>
 </div>

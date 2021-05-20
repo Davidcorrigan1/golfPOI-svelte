@@ -6,7 +6,6 @@
     const golfPOIService = getContext("GolfPOIService");
 
     export let imageCourse={};
-    export let currentUser={};
 
     let errorMessage = ""
     let imagefile;
