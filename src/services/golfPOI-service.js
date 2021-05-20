@@ -37,6 +37,7 @@ export class GolfPOIService {
             this.course = await response.data;
             return this.course;
         } catch (error) {
+            console.log(error);
             return [];
         }
     }

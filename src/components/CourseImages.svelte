@@ -28,7 +28,7 @@
 </script>
 
 <div class="uk-container uk-padding-small">
-    <div class="uk-child-width-1-4@s uk-flex uk-flex-center" uk-grid uk-height-match="target: .uk-card">
+    <div class="uk-child-width-1-4@s uk-flex uk-flex-left" uk-grid uk-height-match="target: .uk-card">
         {#each images as image}
             <div class="uk-card uk-card-default uk-card-small uk-text-center uk-text-baseline uk-animation-scale-up">
                 <div class="uk-card-media-top">

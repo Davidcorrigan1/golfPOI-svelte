@@ -37,6 +37,7 @@
 
     onMount(async () => {
         categories = await golfPOIService.getCategoryList();
+        selected = categories[0]._id;
     })
 </script>
 

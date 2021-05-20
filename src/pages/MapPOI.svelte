@@ -1,6 +1,6 @@
 <script>
     import 'leaflet/dist/leaflet.css';
-    import {adminBar, courseCount, mainBar, navBar, subTitle, title, user} from "../stores"
+    import {adminBar, currentCourse, courseCount, mainBar, navBar, subTitle, title, user} from "../stores"
     import {LeafletMap} from '../services/leaflet-map';
     import {getContext, onMount} from "svelte";
     const golfPOIService = getContext("GolfPOIService");
@@ -22,7 +22,7 @@
 
         const courseList = await golfPOIService.getCourseList();
         courseList.forEach(course=>{
-            const courseListStr = `${course.courseName}`;
+            const courseListStr = `<a href='/#/displayPOI/${course._id}'>${course.courseName} <small>(click for details}</small></a>`
             if (course.location) {
                 map.addMarker({lat: course.location.coordinates[1], lng: course.location.coordinates[0]}, courseListStr, 'golfPOIs');
             }

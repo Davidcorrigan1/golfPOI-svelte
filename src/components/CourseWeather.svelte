@@ -3,7 +3,6 @@
     import {getContext, onMount} from "svelte";
     const golfPOIService = getContext("GolfPOIService");
 
-    let weatherAPI;
     let errorMessage = "";
     let courseToBeUpdated;
     let currentWeather = {};
@@ -15,7 +14,6 @@
     onMount(async () => {
         courseToBeUpdated = await golfPOIService.getCourse($currentCourse._id);
         currentWeather =await golfPOIService.getGolfPOIWeather(courseToBeUpdated.location.coordinates[1], courseToBeUpdated.location.coordinates[0]);
-        console.log(currentWeather);
         weatherDesc = currentWeather.weather[0].description;
         weatherFeelsLike = currentWeather.main.feels_like;
         weatherWindSpeed = currentWeather.wind.speed;
