@@ -19,7 +19,8 @@
   import Navigator from "./components/Navigator.svelte";
   import Router from "svelte-spa-router";
 
-  setContext("GolfPOIService", new GolfPOIService("http://localhost:4000"));
+  //setContext("GolfPOIService", new GolfPOIService("http://localhost:4000"));
+  setContext("GolfPOIService", new GolfPOIService("https://morning-wave-29083.herokuapp.com"));
 
   let routes = {
     "/" : Main,

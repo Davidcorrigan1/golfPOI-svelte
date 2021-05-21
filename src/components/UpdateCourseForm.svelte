@@ -49,6 +49,7 @@
     }
 </script>
 
+<div class="uk-margin uk-width-1xlarge uk-card uk-card-default uk-card-body uk-box-shadow-large">
 <form class="uk-form-stacked" on:submit|preventDefault={updateGolfPOI}>>
     <fieldset class="uk-fieldset">
         <div class="uk-margin uk-fieldset uk-text-left">
@@ -102,3 +103,4 @@
         {/if}
     </fieldset>
 </form>
+</div>
