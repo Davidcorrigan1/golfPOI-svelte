@@ -1,7 +1,7 @@
 <script>
 
     import AddCategoryForm from "../components/AddCategoryForm.svelte";
-    import {user, adminBar, navBar, mainBar, subTitle, title, courseCount} from "../stores";
+    import {user, adminBar, navBar, mainBar, subTitle, title, courseCount} from "../Stores";
     import {GolfPOIService} from "../services/golfPOI-service";
     import {onMount} from "svelte";
 

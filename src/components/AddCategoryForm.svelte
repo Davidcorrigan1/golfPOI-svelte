@@ -1,5 +1,5 @@
 <script>
-    import {user} from "../stores";
+    import {user} from "../Stores";
     import { push, replace } from "svelte-spa-router";
     import {getContext, onMount} from "svelte";
     const golfPOIService = getContext("GolfPOIService");

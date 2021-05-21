@@ -1,6 +1,6 @@
 <script>
     import CourseList from "../components/CourseList.svelte";
-    import {user, adminBar, navBar, mainBar, subTitle, title, courseCount, currentCategoryId} from "../stores";
+    import {user, adminBar, navBar, mainBar, subTitle, title, courseCount, currentCategoryId} from "../Stores";
     import {getContext, onMount} from "svelte";
     const golfPOIService = getContext("GolfPOIService");
 

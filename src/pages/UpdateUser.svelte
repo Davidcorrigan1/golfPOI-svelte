@@ -1,7 +1,7 @@
 <script>
     import settingsPageImage from "/src/assets/golfcourse1.jpg";
     import SettingsForm from "../components/SettingsForm.svelte";
-    import {user, userToUpdate, adminBar, navBar, mainBar, subTitle, title, courseCount} from "../stores";
+    import {user, userToUpdate, adminBar, navBar, mainBar, subTitle, title, courseCount} from "../Stores";
 
     let navigation;
     if ($user.adminUser === true) {

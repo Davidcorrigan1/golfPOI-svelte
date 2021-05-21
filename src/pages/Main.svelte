@@ -1,6 +1,6 @@
 <script>
-    import mainPage from "/src/assets/mainPage.jpg"
-    import {title, subTitle, navBar, welcomeBar} from "../stores"
+    import mainPage from "/src/assets/mainPage.jpg";
+    import {title, subTitle, navBar, welcomeBar} from "../Stores";
     import {getContext, onMount} from "svelte";
 
     const golfPOIService = getContext("GolfPOIService");
