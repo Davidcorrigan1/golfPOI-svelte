@@ -1,5 +1,5 @@
 import axios from "axios";
-import {courseCount, user} from "../stores.js"
+import {courseCount, user} from "../Stores";
 export class GolfPOIService {
     courseList = [];
     baseUrl = "";
