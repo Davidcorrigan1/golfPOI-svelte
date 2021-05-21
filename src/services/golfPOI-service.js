@@ -11,6 +11,9 @@ export class GolfPOIService {
         }
     }
 
+    //-----------------------------------------------------------------------------------------------------------
+    // Returns an array of courses from the API call.
+    //-----------------------------------------------------------------------------------------------------------
     async getCourseList() {
         try {
             const response = await axios.get(this.baseUrl + "/api/golfPOIs")
@@ -21,6 +24,9 @@ export class GolfPOIService {
         }
     }
 
+    //-----------------------------------------------------------------------------------------------------------
+    // Returns an array of courses for a categoryId from the API call.
+    //-----------------------------------------------------------------------------------------------------------
     async getCoursesByCategory(categoryId) {
         try {
             const response = await axios.get(this.baseUrl + "/api/golfPOIs/findByCategory/" + categoryId)
@@ -31,6 +37,9 @@ export class GolfPOIService {
         }
     }
 
+    //-----------------------------------------------------------------------------------------------------------
+    // Returns a specific course based on id from the API call.
+    //-----------------------------------------------------------------------------------------------------------
     async getCourse(id) {
         try {
             const response = await axios.get(this.baseUrl + "/api/golfPOIs/" + id)
@@ -42,7 +51,9 @@ export class GolfPOIService {
         }
     }
 
-
+    //-----------------------------------------------------------------------------------------------------------
+    // Creates a new course POI on the DB using the API.
+    //-----------------------------------------------------------------------------------------------------------
     async createGolfPOI(newGolfPOI) {
         try {
             const response = await axios.post(`${this.baseUrl}/api/golfPOIs`, newGolfPOI);
@@ -52,6 +63,9 @@ export class GolfPOIService {
         }
     }
 
+    //-----------------------------------------------------------------------------------------------------------
+    // Updates an existing course POI on the DB using the API.
+    //-----------------------------------------------------------------------------------------------------------
     async updateGolfPOI(courseId, userId, updatedGolfPOI) {
         try {
             const response = await axios.post(`${this.baseUrl}/api/golfPOIs/update/` + courseId + "/" + userId, updatedGolfPOI);
@@ -61,6 +75,9 @@ export class GolfPOIService {
         }
     }
 
+    //-----------------------------------------------------------------------------------------------------------
+    // Retrieves the Weather for specific lat, long coordinates using the API.
+    //-----------------------------------------------------------------------------------------------------------
     async getGolfPOIWeather(latitude, longitude) {
         try {
             const response = await axios.get(`${this.baseUrl}/api/weatherAPI/` + latitude + "/" + longitude);
@@ -71,6 +88,9 @@ export class GolfPOIService {
         }
     }
 
+    //-----------------------------------------------------------------------------------------------------------
+    // Deletes an existing course POI based on id from the DB using the API.
+    //-----------------------------------------------------------------------------------------------------------
     async deleteGolfPOI(courseId) {
         try {
             const response = await axios.delete(this.baseUrl + "/api/golfPOIs/" + courseId)
@@ -84,6 +104,9 @@ export class GolfPOIService {
         }
     }
 
+    //-----------------------------------------------------------------------------------------------------------
+    // Retrieves the list of categories from the DB using the API.
+    //-----------------------------------------------------------------------------------------------------------
     async getCategoryList() {
         try {
             const response = await axios.get(this.baseUrl + "/api/locationCategories")
@@ -94,6 +117,9 @@ export class GolfPOIService {
         }
     }
 
+    //-----------------------------------------------------------------------------------------------------------
+    // Creates a new category on the DB using the API.
+    //-----------------------------------------------------------------------------------------------------------
     async createCategory(newCategory) {
         try {
             const response = await axios.post(this.baseUrl + "/api/locationCategories", newCategory)
@@ -104,6 +130,9 @@ export class GolfPOIService {
         }
     }
 
+    //-----------------------------------------------------------------------------------------------------------
+    // Deletes a category based on id from the DB using the API.
+    //-----------------------------------------------------------------------------------------------------------
     async deleteCategory(categoryId) {
         try {
             const response = await axios.delete(this.baseUrl + "/api/locationCategories/" + categoryId)
@@ -117,6 +146,10 @@ export class GolfPOIService {
         }
     }
 
+    //-----------------------------------------------------------------------------------------------------------
+    // Authenticates the user using the API. Then updates the headers on the axios calls with the token
+    // retrieved. It also save it in local storage in the browser.
+    //-----------------------------------------------------------------------------------------------------------
     async login(email, password) {
         try {
             const response = await axios.post(`${this.baseUrl}/api/users/authenticate`, {email, password});
@@ -130,6 +163,9 @@ export class GolfPOIService {
         }
     }
 
+    //-----------------------------------------------------------------------------------------------------------
+    // Logs the user out by resetting all the store variables.
+    //-----------------------------------------------------------------------------------------------------------
     async logout() {
         user.set({
             _id : "",
@@ -146,6 +182,9 @@ export class GolfPOIService {
         localStorage.golfPOIToken = null;
     }
 
+    //-----------------------------------------------------------------------------------------------------------
+    // Signs up a new user, by creating a new user and authenticating them using the API.
+    //-----------------------------------------------------------------------------------------------------------
     async signup(newUser) {
         try {
             const createdUser = await axios.post(`${this.baseUrl}/api/users/create`, newUser);
@@ -164,6 +203,9 @@ export class GolfPOIService {
         }
     }
 
+    //-----------------------------------------------------------------------------------------------------------
+    // Updates an existing user on the DB using the API.
+    //-----------------------------------------------------------------------------------------------------------
     async updateUser(userId, updatedUser) {
         try {
             const response = await axios.post(`${this.baseUrl}/api/users/update/` + userId , updatedUser);
@@ -174,6 +216,9 @@ export class GolfPOIService {
         }
     }
 
+    //-----------------------------------------------------------------------------------------------------------
+    // Retrieves an existing user from the DB based on email using the API.
+    //-----------------------------------------------------------------------------------------------------------
     async getUserByEmail(email) {
         try {
             const response = await axios.get(this.baseUrl + "/api/users/email/" + email)
@@ -184,6 +229,9 @@ export class GolfPOIService {
         }
     }
 
+    //-----------------------------------------------------------------------------------------------------------
+    // Retrieves all users from the DB using the API.
+    //-----------------------------------------------------------------------------------------------------------
     async getUserList() {
         try {
             const response = await axios.get(this.baseUrl + "/api/users")
@@ -194,6 +242,9 @@ export class GolfPOIService {
         }
     }
 
+    //-----------------------------------------------------------------------------------------------------------
+    // Delets an existing user based on id from the DB using the API.
+    //-----------------------------------------------------------------------------------------------------------
     async deleteUser(userId) {
         try {
             const response = await axios.delete(this.baseUrl + "/api/users/" + userId)
@@ -207,6 +258,9 @@ export class GolfPOIService {
         }
     }
 
+    //-----------------------------------------------------------------------------------------------------------
+    // Updates an existing user on the DB using the API.
+    //-----------------------------------------------------------------------------------------------------------
     async updateSettings(firstName, lastName, email, password, id, loginCount, lastLoginDate) {
         try {
             const userDetails = {
@@ -227,6 +281,9 @@ export class GolfPOIService {
         }
     }
 
+    //-----------------------------------------------------------------------------------------------------------
+    // Retrieves a list of images with the passed array of public ids from Cloudinary using the API.
+    //-----------------------------------------------------------------------------------------------------------
     async getImageList(idList) {
         try {
             const response = await axios.get(this.baseUrl + "/api/imageAPI/" + idList)
@@ -237,7 +294,9 @@ export class GolfPOIService {
         }
     }
 
-
+    //-----------------------------------------------------------------------------------------------------------
+    // Upload a new image to Cloudinary and update it in the Course related images array using the API.
+    //-----------------------------------------------------------------------------------------------------------
     async uploadImage(courseId, imagefile) {
         try {
             const response = await axios.post(this.baseUrl + "/api/golfPOIs/upload/" + courseId , {imagefile: imagefile})
@@ -247,6 +306,9 @@ export class GolfPOIService {
         }
     }
 
+    //-----------------------------------------------------------------------------------------------------------
+    // Delete an image from Cloudinary with public id and remove from Course array of images using the API.
+    //-----------------------------------------------------------------------------------------------------------
     async deleteImage(imageId, courseId, userId) {
         try {
             const response = await axios.delete(this.baseUrl + "/api/golfPOIs/deleteImage/" + imageId + "/" + courseId + "/" + userId)
