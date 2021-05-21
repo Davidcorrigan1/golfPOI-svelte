@@ -1,7 +1,7 @@
 <script>
     import {onMount, getContext} from "svelte";
     import {push} from "svelte-spa-router";
-    import {navBar, currentCourse, currentCategoryId, courseCount} from "../stores";
+    import {navBar, currentCourse, currentCategoryId, courseCount} from "../Stores";
 
     const golfPOIService = getContext("GolfPOIService");
     let errorMessage = "";

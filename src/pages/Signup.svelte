@@ -1,5 +1,5 @@
 <script>
-    import {title, subTitle, navBar, welcomeBar} from "../stores"
+    import {title, subTitle, navBar, welcomeBar} from "../Stores"
     import SignupForm from "../components/SignupForm.svelte"
     import mainPageImage from "/src/assets/main page image.jpg";
     title.set("Golf Courses of Ireland");

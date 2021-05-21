@@ -1,6 +1,6 @@
 <script>
     import AddCourseForm from "../components/AddCourseForm.svelte";
-    import {user, adminBar, navBar, mainBar, subTitle, title, courseCount} from "../stores";
+    import {user, adminBar, navBar, mainBar, subTitle, title, courseCount} from "../Stores";
 
     let navigation;
     if ($user.adminUser === true) {

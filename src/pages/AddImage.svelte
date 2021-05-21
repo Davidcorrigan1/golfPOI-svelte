@@ -1,7 +1,7 @@
 <script>
     import CourseImages from "../components/CourseImages.svelte";
     import AddImageForm from "../components/AddImageForm.svelte";
-    import {user, currentCourse, adminBar, navBar, mainBar, subTitle, title, courseCount} from "../stores";
+    import {user, currentCourse, adminBar, navBar, mainBar, subTitle, title, courseCount} from "../Stores";
 
     let navigation;
     if ($user.adminUser === true) {

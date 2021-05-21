@@ -1,7 +1,7 @@
 <script>
     import golfBall from "/src/assets/golf-ball-symbol.jpg"
     import titleCourse from "/src/assets/Ballybunion-Golf-Club-Old-Course.jpg"
-    import {title, subTitle} from "../stores.js"
+    import {title, subTitle} from "../Stores"
 </script>
 
 <div class="uk-card uk-card-default uk-padding-small uk-visible@m">

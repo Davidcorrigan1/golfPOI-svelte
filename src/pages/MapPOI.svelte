@@ -1,6 +1,6 @@
 <script>
     import 'leaflet/dist/leaflet.css';
-    import {adminBar, currentCourse, courseCount, mainBar, navBar, subTitle, title, user} from "../stores"
+    import {adminBar, currentCourse, courseCount, mainBar, navBar, subTitle, title, user} from "../Stores"
     import {LeafletMap} from '../services/leaflet-map';
     import {getContext, onMount} from "svelte";
     const golfPOIService = getContext("GolfPOIService");
