@@ -1,5 +1,5 @@
 <script>
-    import 'leaflet/dist/leaflet.css';
+    //import 'leaflet/dist/leaflet.css';
     import {adminBar, currentCourse, courseCount, mainBar, navBar, subTitle, title, user} from "../Stores"
     import {LeafletMap} from '../services/leaflet-map';
     import {getContext, onMount} from "svelte";
